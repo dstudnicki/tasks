@@ -22,15 +22,14 @@ type Task  struct {
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add [task name]",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "This command lets you add a task to the list",
+	Long: `This command lets you add a task to the list. 
+	For example: ./task add "Learn Go"
+	Then it creates output.json file with the task added.
+	`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		name := args[0]
+		name := args[0] 
 		tasks := loadTasks()
 		tasks = append(tasks, Task{ID: len(tasks) + 1, Name: name, Date: time.Now().Format("2006-01-02") })
 		addTask(tasks)
