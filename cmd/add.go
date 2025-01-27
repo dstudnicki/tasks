@@ -17,6 +17,7 @@ type Task  struct {
 	ID  int    `json:"id"`
 	Name string `json:"name"`
 	Date string `json:"date"`
+	Done bool   `json:"done"`
 }
 
 // addCmd represents the add command

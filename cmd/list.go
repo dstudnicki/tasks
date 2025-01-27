@@ -32,11 +32,11 @@ func listTasks() []Task {
 	writer := tabwriter.NewWriter(os.Stdout, 0, 2, 4, ' ', 0)
 	tasks := loadTasks()
 	writer.Write(
-		[]byte("ID\tName\tDate\n"),
+		[]byte("ID\tTask\tCreated\tDone\n"),
 	)
 	for _, task := range tasks {
 		writer.Write(
-			[]byte(fmt.Sprintf("%d\t%s\t%s\n", task.ID, task.Name, task.Date)),
+			[]byte(fmt.Sprintf("%d\t%s\t%s\t%t\n", task.ID, task.Name, task.Date, task.Done)),
 		)
 	}
 	writer.Flush()
