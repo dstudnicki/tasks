@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -28,9 +29,9 @@ var addCmd = &cobra.Command{
 	For example: ./task add "Learn Go"
 	Then it creates output.json file with the task added.
 	`,
-	Args: cobra.ExactArgs(1),
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		name := args[0] 
+		name := strings.Join(args, " ")
 		tasks := loadTasks()
 		tasks = append(tasks, Task{ID: len(tasks) + 1, Name: name, Date: time.Now().Format("2006-01-02") })
 		addTask(tasks)
